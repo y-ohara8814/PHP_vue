@@ -1,5 +1,6 @@
 <?php
-echo 'HELLO';
+$imagePath1 = '/img/sample.jpg';
+$imagePath2 = '/img/sample2.jpg';
 ?>
 
 
@@ -24,6 +25,12 @@ echo 'HELLO';
     <span v-show="!isImageVisible">
         <p>No Image</p>
     </span>
+
+    <button @click="clearImage2Src">画像のクリア</button>
+    <img ref="image" :src="image2Src" alt="Image" :style="{ display: isImage2Visible ? 'block' : 'none', width: '25%' }">
+    <span v-show="!isImage2Visible">
+        <p>No Image</p>
+    </span>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
@@ -34,7 +41,11 @@ echo 'HELLO';
     // isActive: '1',
     isActive: true,
     isImageVisible: true,
-    imageSrc: '/img/sample.jpg'
+    isImage2Visible: true,
+
+    imageSrc: '/img/sample.jpg',
+    image2Src: '/img/sample2.jpg'
+
   },
   methods: {
     // isSelect: function (num) {
@@ -44,6 +55,12 @@ echo 'HELLO';
         // this.$refs.image.src = '';
         this.imageSrc = '';
         this.isImageVisible = false;
+
+    },
+    clearImage2Src(){
+        // this.$refs.image.src = '';
+        this.image2Src = '';
+        this.isImage2Visible = false;
 
     }
   }
