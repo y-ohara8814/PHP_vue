@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        .tabs {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .tab {
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+        .tab.active {
+            background-color: #eee;
+        }
+        .content {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="tabs">
+            <div :class="['tab', { active: currentTab === 1 }]" @click="currentTab = 1">Tab 1</div>
+            <div :class="['tab', { active: currentTab === 2 }]" @click="currentTab = 2">Tab 2</div>
+            <div :class="['tab', { active: currentTab === 3 }]" @click="currentTab = 3">Tab 3</div>
+        </div>
+        <div class="content" v-if="currentTab === 1">
+            <div v-for="(item, index) in data1" :key="index">
+                <strong>Name:</strong> {{ item.name }}<br>
+                <strong>Job:</strong> {{ item.job }}<br>
+                <strong>Comment:</strong> {{ item.comment }}<br><br>
+            </div>
+        </div>
+        <div class="content" v-if="currentTab === 2">
+            <div v-for="(item, index) in data2" :key="index">
+                <strong>Name:</strong> {{ item.name }}<br>
+                <strong>Job:</strong> {{ item.job }}<br>
+                <strong>Comment:</strong> {{ item.comment }}<br><br>
+            </div>
+        </div>
+        <div class="content" v-if="currentTab === 3">
+            <div v-for="(item, index) in data3" :key="index">
+                <strong>Name:</strong> {{ item.name }}<br>
+                <strong>Job:</strong> {{ item.job }}<br>
+                <strong>Comment:</strong> {{ item.comment }}<br><br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                currentTab: 1,
+                data1: {{ data1|json_encode|raw }},
+                data2: {{ data2|json_encode|raw }},
+                data3: {{ data3|json_encode|raw }}
+            }
+        });
+    </script>
+</body>
+</html>

@@ -21,19 +21,12 @@ $jsonArray = json_encode($originalArray);
 ?>
 
         <!-- post.blade.php -->
-<div id="app">
-    <ul>
-        <li v-for="item in topFourItems" :key="item.id">
-            <h3>@{{ item.title }}</h3>
-            <p>@{{ item.text }}</p>
-            <p>PS4: @{{ item.ps4 }}</p>
-            <p>PS5: @{{ item.ps5 }}</p>
-            <p>Xbox: @{{ item.xbox }}</p>
-            <p>Android: @{{ item.android }}</p>
-            <p>iOS: @{{ item.ios }}</p>
-            <p>Post ID: @{{ item.post_id }}</p>
-        </li>
-    </ul>
+        <div id="app">
+    <div v-for="item in topFourItems" :key="item.id" class="item-container">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+        <p>Post ID: {{ item.post_id }}</p>
+    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
