@@ -1,1 +1,4 @@
 .DS_Store
+
+/news/uploads/bomber/*
+/news/uploads/bomber/tmp/*
